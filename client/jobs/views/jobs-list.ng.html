@@ -1,0 +1,33 @@
+<div class="row">
+	<form class="col s12">
+		<div class="row">
+			<div class="col s12">
+				<input placeholder="Barkeeper" id="title" ng-model="newJob.title" type="text" class="validate">
+				<label for="title">Jobtitel</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<input placeholder="Tolle neue Bar sucht tollen neuen Typ" id="description"  ng-model="newJob.description" type="text" class="validate">
+				<label for="description">Jobbeschreibung</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" ng-model="newJob.status" />
+      <label for="filled-in-box">Veröffentlichen</label>
+			</div>
+		</div>
+		<a class="btn waves-effect waves-light" ng-click="newJob.owner=$root.currentUser._id; jobs.push(newJob)">Add</a>
+	</form>
+</div>
+
+<ul class="collection">
+	<li class="collection-item" ng-repeat="job in jobs">
+      	<a href="/jobs/{{job._id}}">
+		{{job.title}}
+    	<p>{{job.description}}</p>
+		<a class="btn waves-effect waves-light" href="#!" ng-click="remove(job)">X</a>
+		</a>
+	</li>
+</ul>
